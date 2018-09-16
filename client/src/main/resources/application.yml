@@ -1,0 +1,27 @@
+server:
+  port: 8082
+spring:
+    application:
+        #即service-id
+        name: client
+    http:
+        encoding:
+          charset: UTF-8
+          enabled: true
+          force: true
+zuul:
+  sensitive-headers: #防止请求header被过滤掉，导致接口访问失败，http://www.cnblogs.com/liaojie970/p/9158991.html
+  routes:
+  #以下是自定义,比如myconfig和myfeign都是自定义，实现路由配置，此功能与nginx基本一致
+    res:
+      path: /api-res/**
+      url: http://localhost:8080/
+security:
+  oauth2:
+    client:
+      accessTokenUri: http://localhost:8080/oauth/token
+      userAuthorizationUri: http://localhost:8080/oauth/authorize
+      clientId: client1
+      clientSecret: secret
+    resource:
+      userInfoUri: http://localhost:8080/user

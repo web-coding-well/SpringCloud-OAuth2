@@ -1,0 +1,10 @@
+server:
+    port: 8081
+
+security:
+  oauth2:
+    client:
+      clientId: client1
+      clientSecret: secret
+    resource:
+      userInfoUri: http://localhost:8080/user
